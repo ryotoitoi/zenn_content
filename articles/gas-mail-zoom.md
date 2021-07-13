@@ -136,7 +136,7 @@ function onFormSubmit(e) {
   const zoom = getZoomInfo(date);
   
   // 自動返信メール件名
-  const subject = 'お申し込みありがとうございあます！。';
+  const subject = 'お申し込みありがとうございます！';
       
   // 自動返信メール本文
   const body = name + '様\n' +
@@ -220,7 +220,7 @@ function getZoomInfo(date) {
   const zoom = getZoomInfo(date);
   
   // 自動返信メール件名
-  const subject = 'お申し込みありがとうございあます！。';
+  const subject = 'お申し込みありがとうございます！';
       
   // 自動返信メール本文
   const body = name + '様\n' +
