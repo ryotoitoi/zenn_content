@@ -2,7 +2,7 @@
 title: "GASを使ってメールの自動返信システムを作る。〜フォームの回答内容によって送信内容を変更する〜"
 emoji: "🌌"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: []
+topics: ["GAS", "GoogleAppsScript","自動化","Google"]
 published: true
 ---
 
