@@ -27,12 +27,14 @@ https://zenn.dev/ryotoitoi/articles/3cedb115d816e5
 
 ![](https://storage.googleapis.com/zenn-user-upload/00c950a5a94f3eb66c79e283.png)
 
-次から実際にGASを書いて上のやりたいことを実現できるようにしていきたいと思います。
 イメージとしては以下のような結果が帰ってくるようなものを作りたいと思います。
 （日付やURL、ミーティングIDがちゃんと違っている。）
 
 ![](https://storage.googleapis.com/zenn-user-upload/8a8b2b5b5ff8dd33b02dce20.png)
 ![](https://storage.googleapis.com/zenn-user-upload/46ed49c379616defdf7359e8.png)
+
+
+次から実際にGASを書いて上のやりたいことを実現できるようにしていきたいと思います!
 # 基本的なGASでの自動返信はこちらで！
 基本的なフォームの作成から自動返信システムの作成までの流れはこちらの記事で説明しています。
 今回は基本的なことには触れつつも、前回の方法ではできないことをどうやって実装するかの説明に焦点を当てていきと思います。
@@ -279,7 +281,7 @@ function getZoomInfo(date) {
 
 https://zenn.dev/ryotoitoi/articles/3cedb115d816e5#gas%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E3%81%99%E3%82%8B
 
-## 試しに回答してみる
+# 試しに回答してみる
 こんな感じで回答してみてどんなメールが帰ってくるか試してみます！
 まずは参加希望日を「2021/09/04」にして送ってみます！
 ![](https://storage.googleapis.com/zenn-user-upload/0c5081548468eb4d9725c533.png)
