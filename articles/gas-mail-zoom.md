@@ -1,6 +1,6 @@
 ---
 title: "GASを使ってメールの自動返信システムを作る。回答によって送信内容を変更する。"
-emoji: "😸"
+emoji: "🌌"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: []
 published: false
@@ -272,3 +272,21 @@ getZoomInfo()とonFormSubmit()という２つの関数があります。
 https://zenn.dev/ryotoitoi/articles/3cedb115d816e5#gas%E3%81%AE%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E3%81%99%E3%82%8B
 
 ## 試しに回答してみる
+こんな感じで回答してみてどんなメールが帰ってくるか試してみます！
+まずは参加希望日を「2021/09/04」にして送ってみます！
+![](https://storage.googleapis.com/zenn-user-upload/0c5081548468eb4d9725c533.png)
+
+そうするとこんな感じのメールが帰ってきます！
+![](https://storage.googleapis.com/zenn-user-upload/46ed49c379616defdf7359e8.png)
+
+次は参加希望日を「2021/10/18」にして試してみます。
+そうするとこんな感じで帰ってきます！
+ちゃんと日時やURLやIDが変わって帰ってますね！
+
+![](https://storage.googleapis.com/zenn-user-upload/8a8b2b5b5ff8dd33b02dce20.png)
+
+いい感じに自動返信システムを作ることができました！
+お疲れさまでした！
+
+# 最後に
+
