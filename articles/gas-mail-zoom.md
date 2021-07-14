@@ -23,10 +23,16 @@ https://zenn.dev/ryotoitoi/articles/3cedb115d816e5
 
 下の画像のようなフォームで参加希望日を選んでもらってその日に使用するZoomURLを自動返信するイメージです。
 
+
+
 ![](https://storage.googleapis.com/zenn-user-upload/00c950a5a94f3eb66c79e283.png)
 
 次から実際にGASを書いて上のやりたいことを実現できるようにしていきたいと思います。
+イメージとしては以下のような結果が帰ってくるようなものを作りたいと思います。
+（日付やURL、ミーティングIDがちゃんと違っている。）
 
+![](https://storage.googleapis.com/zenn-user-upload/8a8b2b5b5ff8dd33b02dce20.png)
+![](https://storage.googleapis.com/zenn-user-upload/46ed49c379616defdf7359e8.png)
 # 基本的なGASでの自動返信はこちらで！
 基本的なフォームの作成から自動返信システムの作成までの流れはこちらの記事で説明しています。
 今回は基本的なことには触れつつも、前回の方法ではできないことをどうやって実装するかの説明に焦点を当てていきと思います。
