@@ -260,7 +260,7 @@ function getZoomInfo(date) {
 ```
 
 改めてまとめると、
-**getZoomInfo()**と**onFormSubmit()**という２つの関数があります。
+getZoomInfo()とonFormSubmit()という２つの関数があります。
 - getZoomInfo()で追記したシートからの情報を持ってきて
 - onFormSubmit()で自動返信の処理を行います
 
