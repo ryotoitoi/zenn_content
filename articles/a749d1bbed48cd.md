@@ -3,7 +3,7 @@ title: "【メモ】Macでインターネットアカウントを追加する時
 emoji: "🐡"
 type: "idea" # tech: 技術記事 / idea: アイデア
 topics: ["mac"]
-published: false
+published: true
 ---
 # Macでカウントを追加したいのに無限リロードになった時の対処法
 Macで、GmailやGoogleカレンダーなどを連携させたい時にはSystem Preferencesの
