@@ -6,7 +6,19 @@ topics: ["icon", "design", "illustration"]
 published: false
 ---
 # おすすめフリーデザインサイト一覧
+商用利用が可能なアイコンやイラストがまとめられているサイトの一覧です。
+利用規約は各サイトごとに異なるので適宜確認が必要となります。
 ## アイコン系
+* [Noun Project](https://thenounproject.com/)
+![image_00](/images/design_icon_list/noun_project.png)
+
+* [Font Awesome](https://fontawesome.com/)
+![image_000](/images/design_icon_list/font_awesome.png)
+
+* [icon8](https://icons8.com/)
+![image_001](/images/design_icon_list/icon8.png)
+
+
 * [ICOOON MONO](https://icooon-mono.com/)
 ![image_01](/images/design_icon_list/icooon_mono.png)
 
