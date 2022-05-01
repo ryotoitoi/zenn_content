@@ -1,5 +1,5 @@
 ---
-title: "おすすめフリーデザインサイト一覧"
+title: "おすすめフリーデザインサイト一覧（商用利用可能）"
 emoji: "🧳"
 type: "idea" # tech: 技術記事 / idea: アイデア
 topics: ["icon", "design", "illustration"]
