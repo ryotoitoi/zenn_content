@@ -1,7 +1,7 @@
 ---
-title: "タイトル"
+title: "ビッグデータ分析・活用のためのSQLレシピをBigQueryではじめる"
 emoji: "✨"
-type: "idea" # tech: 技術記事 / idea: アイデア
+type: "tech" # tech: 技術記事 / idea: アイデア
 topics: []
 published: false
 ---
