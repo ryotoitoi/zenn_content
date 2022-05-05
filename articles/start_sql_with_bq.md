@@ -6,8 +6,5 @@ topics: []
 published: false
 ---
 
-# head1
-import pandas as pd 
-import numpy as np
-import plotly.graph_objects as go
-as 
+# はじめに
+
