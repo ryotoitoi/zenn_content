@@ -55,10 +55,76 @@ published: false
 ![](../images/sqp-book/dummy_download.png)
 
 ### ダウンロードしてきたダミーデータからBigQueryにテーブルを作成する
-まず試しに`Chapter3/3-1-1-data.sql`のデータをBigQueryのテーブルに保存してみます。
-GCPのナビゲーションメニューから`BigQuery`を探し出して`SQLワークスペース`移動します。すると以下のような画面になっていると思われます。
+試しに`Chapter3/3-1-1-data.sql`のデータをBigQueryのテーブルに保存してみます。
+まず、GCPのナビゲーションメニューから`BigQuery`を探し出して`SQLワークスペース`移動します。すると以下のような画面になっていると思われます。
 ![](../images/sqp-book/sql-workspace.png)
+次に、`Chapter3/3-1-1-data.sql`のコード（下記のコード）をコピーします。
+```SQL
+DROP TABLE IF EXISTS mst_users;
+CREATE TABLE mst_users(
+    user_id         varchar(255)
+  , register_date   varchar(255)
+  , register_device integer
+);
 
+INSERT INTO mst_users
+VALUES
+    ('U001', '2016-08-26', 1)
+  , ('U002', '2016-08-26', 2)
+  , ('U003', '2016-08-27', 3)
+;
+```
+そして、コピーしたものをエディタに貼り付けをします。
+その後、貼り付けたものを以下のように編集します。
+```SQL
+DROP TABLE IF EXISTS `sql-book-for-bigdata.mst_users`;
+CREATE TABLE `sql-book-for-bigdata.mst_users` (
+    user_id         STRING
+  , register_date   DATETIME
+  , register_device INT64
+);
+
+INSERT INTO `sql-book-for-bigdata.mst_users`
+VALUES
+    ('U001', '2016-08-26', 1)
+  , ('U002', '2016-08-26', 2)
+  , ('U003', '2016-08-27', 3)
+;
+```
+今、エディタの画面が以下の画像のようになっていればOKです。
+![](../images/sqp-book/bq-editor.png)
+
+編集したのは以下の点です。
+```diff SQL
++ DROP TABLE IF EXISTS `sql-book-for-bigdata.mst_users`;
++ CREATE TABLE `sql-book-for-bigdata.mst_users` (
++     user_id         STRING
++  , register_date   DATETIME
++   , register_device INT64
++ );
+
++ INSERT INTO `sql-book-for-bigdata.mst_users`
++ VALUES
++    ('U001', '2016-08-26', 1)
++  , ('U002', '2016-08-26', 2)
++  , ('U003', '2016-08-27', 3)
++ ;
+
+
+- DROP TABLE IF EXISTS mst_users;
+- CREATE TABLE mst_users(
+-    user_id         varchar(255)
+-   , register_date   varchar(255)
+-  , register_device integer
+- );
+
+- INSERT INTO mst_users
+- VALUES
+-     ('U001', '2016-08-26', 1)
+-   , ('U002', '2016-08-26', 2)
+-   , ('U003', '2016-08-27', 3)
+- ;
+```
 
 # 実際にクエリを書いてみる
 
