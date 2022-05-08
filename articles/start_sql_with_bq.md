@@ -97,33 +97,21 @@ VALUES
 編集したのは以下の点です。
 ```diff SQL
 + DROP TABLE IF EXISTS `sql-book-for-bigdata.mst_users`;
+- DROP TABLE IF EXISTS mst_users;
+
 + CREATE TABLE `sql-book-for-bigdata.mst_users` (
 +     user_id         STRING
 +  , register_date   DATETIME
 +   , register_device INT64
 + );
-
-+ INSERT INTO `sql-book-for-bigdata.mst_users`
-+ VALUES
-+    ('U001', '2016-08-26', 1)
-+  , ('U002', '2016-08-26', 2)
-+  , ('U003', '2016-08-27', 3)
-+ ;
-
-
-- DROP TABLE IF EXISTS mst_users;
 - CREATE TABLE mst_users(
 -    user_id         varchar(255)
 -   , register_date   varchar(255)
 -  , register_device integer
 - );
 
++ INSERT INTO `sql-book-for-bigdata.mst_users`
 - INSERT INTO mst_users
-- VALUES
--     ('U001', '2016-08-26', 1)
--   , ('U002', '2016-08-26', 2)
--   , ('U003', '2016-08-27', 3)
-- ;
 ```
 
 # 実際にクエリを書いてみる
