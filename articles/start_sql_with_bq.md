@@ -38,8 +38,8 @@ published: false
 ## GCPで新しいプロジェクトを作成する
 [Google公式サイト](https://cloud.google.com/apigee/docs/hybrid/v1.2/precog-gcpproject?hl=ja)を参考にしてGCPで新しいプロジェクトを作成してください。
 プロジェクトの名前やIDは何でも良いのですが今回、
-- プロジェクト名：`sql-book-for-bigdata`
-- プロジェクトID：`sql-book-for-bigdata`
+- プロジェクト名：`sql-book-for-bigdata.chap3`
+- プロジェクトID：`sql-book-for-bigdata.chap3`
 で設定したプロジェクトを例に進めていくので同じに名前・IDにしておくと混乱が少ないかもしれません。
 
 こちらが完了したらGCPでの設定はほぼ完了です。
@@ -58,6 +58,13 @@ published: false
 試しに`Chapter3/3-1-1-data.sql`のデータをBigQueryのテーブルに保存してみます。
 まず、GCPのナビゲーションメニューから`BigQuery`を探し出して`SQLワークスペース`移動します。すると以下のような画面になっていると思われます。
 ![](../images/sqp-book/sql-workspace.png)
+画像の画面に遷移できたら`sql-book-for-bigdata.chap3`のよこの縦三点リーダーをクリックして**データセットを作成**をクリックします。すると以下のような画面に移ります。
+![](../images/sqp-book/create-dataset.png)
+今回はChapter3のダミーデータを作成したいので、
+- データセットID：chap3
+- データのロケーション：asia-northeast1 (東京)
+としておきましょう。（データのロケーションはどこでも良いです）
+データセットを作成をクリックするとエクスプローラーから`sql-book-for-bigdata`のもとに`chap3`が作成されたことが確認できます。
 次に、`Chapter3/3-1-1-data.sql`のコード（下記のコード）をコピーします。
 ```SQL
 DROP TABLE IF EXISTS mst_users;
@@ -77,14 +84,14 @@ VALUES
 そして、コピーしたものをエディタに貼り付けをします。
 その後、貼り付けたものを以下のように編集します。
 ```SQL
-DROP TABLE IF EXISTS `sql-book-for-bigdata.mst_users`;
-CREATE TABLE `sql-book-for-bigdata.mst_users` (
+DROP TABLE IF EXISTS `sql-book-for-bigdata.chap3.mst_users`;
+CREATE TABLE `sql-book-for-bigdata.chap3.mst_users` (
     user_id         STRING
   , register_date   DATETIME
   , register_device INT64
 );
 
-INSERT INTO `sql-book-for-bigdata.mst_users`
+INSERT INTO `sql-book-for-bigdata.chap3.mst_users`
 VALUES
     ('U001', '2016-08-26', 1)
   , ('U002', '2016-08-26', 2)
@@ -95,11 +102,12 @@ VALUES
 ![](../images/sqp-book/bq-editor.png)
 
 編集したのは以下の点です。
+`sql-book-for-bigdata`の部分には自身が設定したプロジェクトIDが入ります。
 ```diff SQL
-+ DROP TABLE IF EXISTS `sql-book-for-bigdata.mst_users`;
++ DROP TABLE IF EXISTS `sql-book-for-bigdata.chap3.mst_users`;
 - DROP TABLE IF EXISTS mst_users;
 
-+ CREATE TABLE `sql-book-for-bigdata.mst_users` (
++ CREATE TABLE `sql-book-for-bigdata.chap3.mst_users` (
 +     user_id         STRING
 +  , register_date   DATETIME
 +   , register_device INT64
@@ -110,9 +118,10 @@ VALUES
 -  , register_device integer
 - );
 
-+ INSERT INTO `sql-book-for-bigdata.mst_users`
++ INSERT INTO `sql-book-for-bigdata.chap3.mst_users`
 - INSERT INTO mst_users
 ```
+エディタの`実行`をクリックすると`mst_users`という名前のテーブルが`chap3`のもとに作成されます。
 
 # 実際にクエリを書いてみる
 
