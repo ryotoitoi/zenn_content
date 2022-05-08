@@ -31,9 +31,23 @@ published: false
 1. ダミーデータをテーブルに保存する。
 1. 実際にクエリを書いてみる
 ## Googleのアカウントを作成する
+[Google公式サイト](https://support.google.com/accounts/answer/27441?hl=ja)を参考にGoogleアカウントを作成します。
 ## GCP(Google Cloud Platform)のアカウントを作成する
+[こちらのサイト](https://www.purin-it.com/make-gcp-account)を参考にGCPアカウントを作成します。
+途中クレジットカード情報の入力を求められますが、300ドル分を最大12ヶ月無料で試用できるため今回は無料で利用できます。
 ## GCPで新しいプロジェクトを作成する
+[Google公式サイト](https://cloud.google.com/apigee/docs/hybrid/v1.2/precog-gcpproject?hl=ja)を参考にしてGCPで新しいプロジェクトを作成してください。
+プロジェクトの名前やIDは何でも良いのですが今回、
+- プロジェクト名：`sql-book-for-bigdata`
+- プロジェクトID：`sql-book-for-bigdata`
+で設定したプロジェクトを例に進めていくので同じに名前・IDにしておくと混乱が少ないかもしれません。
+
+こちらが完了したらGCPでの設定はほぼ完了です。
 ## 『ビッグデータ分析・活用のためのSQLレシピ』サポートサイトからダミーデータをダウンロードする
+ダミーデータをダウンロードするために[サポートサイト](https://book.mynavi.jp/supportsite/detail/9784839961268.html)にアクセスしてください。
+`ダウンロードデータ`のとろこにある`SQL_Recipe_sample-code_20170325.zip`をクリックするとダウンロードが開始されます。
+![](../images/sqp-book/suport-site.png)
+*サポートサイト参考画像*
 ## ダミーデータをテーブルに保存する
 
 
