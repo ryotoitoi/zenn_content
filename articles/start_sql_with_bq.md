@@ -1,8 +1,8 @@
 ---
 title: "ビッグデータ分析・活用のためのSQLレシピをBigQueryではじめる"
-emoji: "✨"
+emoji: "💽"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: []
+topics: ["SQL", "BigQuery", "ビッグデータ分析・活用のためのSQLレシピ"]
 published: false
 ---
 
