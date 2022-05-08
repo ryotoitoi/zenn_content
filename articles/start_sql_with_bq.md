@@ -122,7 +122,19 @@ VALUES
 - INSERT INTO mst_users
 ```
 エディタの`実行`をクリックすると`mst_users`という名前のテーブルが`chap3`のもとに作成されます。
+これで本に記載のあるクエリを実行できるようになりました！！
 
+### 補足
+今回はさくっとSQLに入門することが目的であるため深堀りはしませんが疑問に思われるであろう点の補足をします。
+- テーブル名について
+BigQueryではテーブルを参照する際に
+`{project-id}.{dataset-id}.{table-name}`で参照する必要があります。
+そのため`mst_users`を`sql-book-for-bigdata.chap3.mst_users`へと変更する必要があったのです。
+
+- 型について
+`varchar(255)`や`integer`といった型はBigQueryではサポートされていないため適宜変更してあげる必要があります。
+これに関しては[公式ドキュメント](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types?hl=ja)を参照するのが良いと思われます。
+ 
 # 実際にクエリを書いてみる
 
 # 最後に
