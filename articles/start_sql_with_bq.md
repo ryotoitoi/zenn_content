@@ -11,7 +11,7 @@ published: false
 データアナリストや機械学習エンジニアをしている方々の中には、pythonやRは書けるけどSQLには馴染みがない方は多いかと思います。かく言う自分もインターンでするまではSQLに触れたことはありませんでした。
 そんな当時SQL初心者であった自分がSQLを勉強した本が『ビッグデータ分析・活用のためのSQLレシピ』でした。データを使用するアナリストや機械学習エンジニアがはじめに手をつけるにはうってつけの本であると思います。
 一方で、手を動かしながら『ビッグデータ分析・活用のためのSQLレシピ』を読み進めようとすると初学者にはいくつかのハマりポイントが存在します。例えば、『ビッグデータ分析・活用のためのSQLレシピ』にはクエリを実行するサンプルコードは記載がありますが、どのようにダミーデータをデーブルに保存するかなどは記載がありません。ここで詰まってしまうことで手を動かしながら読み進めることを諦めてしまった人も多いのではないでしょうか？
-本記事ではそれらも問題点をBigQueryを用いることで解決し、初学者でも苦労なくSQLの勉強を開始できるようになることを目指します。
+本記事ではそれらの問題点をBigQueryを用いることで解決し、初学者でも苦労なくSQLの勉強を開始できるようになることを目指します。
 ## 想定読者
 - SQLを勉強したい
 - 『ビッグデータ分析・活用のためのSQLレシピ』を実際に手を動かしながら勉強したい
@@ -49,7 +49,82 @@ published: false
 ![](../images/sqp-book/suport-site.png)
 *サポートサイト参考画像*
 ## ダミーデータをテーブルに保存する
+### ダウンロードしたダミーデータを確認する。
+まずVScodeでもなんでもいいので先程ダウンロードしたダミーデータを開きます。
+そして`Chapter3/3-1-1-data.sql`を開いて見てください。以下の画像のようなコードが記載されていることが確認できるかと思います。
+![](../images/sqp-book/dummy_download.png)
 
+### ダウンロードしてきたダミーデータからBigQueryにテーブルを作成する
+試しに`Chapter3/3-1-1-data.sql`のデータをBigQueryのテーブルに保存してみます。
+まず、GCPのナビゲーションメニューから`BigQuery`を探し出して`SQLワークスペース`移動します。すると以下のような画面になっていると思われます。
+![](../images/sqp-book/sql-workspace.png)
+次に、`Chapter3/3-1-1-data.sql`のコード（下記のコード）をコピーします。
+```SQL
+DROP TABLE IF EXISTS mst_users;
+CREATE TABLE mst_users(
+    user_id         varchar(255)
+  , register_date   varchar(255)
+  , register_device integer
+);
+
+INSERT INTO mst_users
+VALUES
+    ('U001', '2016-08-26', 1)
+  , ('U002', '2016-08-26', 2)
+  , ('U003', '2016-08-27', 3)
+;
+```
+そして、コピーしたものをエディタに貼り付けをします。
+その後、貼り付けたものを以下のように編集します。
+```SQL
+DROP TABLE IF EXISTS `sql-book-for-bigdata.mst_users`;
+CREATE TABLE `sql-book-for-bigdata.mst_users` (
+    user_id         STRING
+  , register_date   DATETIME
+  , register_device INT64
+);
+
+INSERT INTO `sql-book-for-bigdata.mst_users`
+VALUES
+    ('U001', '2016-08-26', 1)
+  , ('U002', '2016-08-26', 2)
+  , ('U003', '2016-08-27', 3)
+;
+```
+今、エディタの画面が以下の画像のようになっていればOKです。
+![](../images/sqp-book/bq-editor.png)
+
+編集したのは以下の点です。
+```diff SQL
++ DROP TABLE IF EXISTS `sql-book-for-bigdata.mst_users`;
++ CREATE TABLE `sql-book-for-bigdata.mst_users` (
++     user_id         STRING
++  , register_date   DATETIME
++   , register_device INT64
++ );
+
++ INSERT INTO `sql-book-for-bigdata.mst_users`
++ VALUES
++    ('U001', '2016-08-26', 1)
++  , ('U002', '2016-08-26', 2)
++  , ('U003', '2016-08-27', 3)
++ ;
+
+
+- DROP TABLE IF EXISTS mst_users;
+- CREATE TABLE mst_users(
+-    user_id         varchar(255)
+-   , register_date   varchar(255)
+-  , register_device integer
+- );
+
+- INSERT INTO mst_users
+- VALUES
+-     ('U001', '2016-08-26', 1)
+-   , ('U002', '2016-08-26', 2)
+-   , ('U003', '2016-08-27', 3)
+- ;
+```
 
 # 実際にクエリを書いてみる
 
