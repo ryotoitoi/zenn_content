@@ -1,9 +1,9 @@
 ---
-title: "ビッグデータ分析・活用のためのSQLレシピをBigQueryではじめる"
-emoji: "✨"
+title: "BigQueryではじめる『ビッグデータ分析・活用のためのSQLレシピ』"
+emoji: "💽"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: []
-published: false
+topics: ["SQL", "BigQuery", "ビッグデータ分析・活用のためのSQLレシピ"]
+published: true
 ---
 
 # はじめに
@@ -38,8 +38,8 @@ published: false
 ## GCPで新しいプロジェクトを作成する
 [Google公式サイト](https://cloud.google.com/apigee/docs/hybrid/v1.2/precog-gcpproject?hl=ja)を参考にしてGCPで新しいプロジェクトを作成してください。
 プロジェクトの名前やIDは何でも良いのですが今回、
-- プロジェクト名：`sql-book-for-bigdata`
-- プロジェクトID：`sql-book-for-bigdata`
+- プロジェクト名：`sql-book-for-bigdata.chap3`
+- プロジェクトID：`sql-book-for-bigdata.chap3`
 で設定したプロジェクトを例に進めていくので同じに名前・IDにしておくと混乱が少ないかもしれません。
 
 こちらが完了したらGCPでの設定はほぼ完了です。
@@ -58,6 +58,13 @@ published: false
 試しに`Chapter3/3-1-1-data.sql`のデータをBigQueryのテーブルに保存してみます。
 まず、GCPのナビゲーションメニューから`BigQuery`を探し出して`SQLワークスペース`移動します。すると以下のような画面になっていると思われます。
 ![](../images/sqp-book/sql-workspace.png)
+画像の画面に遷移できたら`sql-book-for-bigdata.chap3`のよこの縦三点リーダーをクリックして**データセットを作成**をクリックします。すると以下のような画面に移ります。
+![](../images/sqp-book/create-dataset.png)
+今回はChapter3のダミーデータを作成したいので、
+- データセットID：chap3
+- データのロケーション：asia-northeast1 (東京)
+としておきましょう。（データのロケーションはどこでも良いです）
+データセットを作成をクリックするとエクスプローラーから`sql-book-for-bigdata`のもとに`chap3`が作成されたことが確認できます。
 次に、`Chapter3/3-1-1-data.sql`のコード（下記のコード）をコピーします。
 ```SQL
 DROP TABLE IF EXISTS mst_users;
@@ -77,14 +84,14 @@ VALUES
 そして、コピーしたものをエディタに貼り付けをします。
 その後、貼り付けたものを以下のように編集します。
 ```SQL
-DROP TABLE IF EXISTS `sql-book-for-bigdata.mst_users`;
-CREATE TABLE `sql-book-for-bigdata.mst_users` (
+DROP TABLE IF EXISTS `sql-book-for-bigdata.chap3.mst_users`;
+CREATE TABLE `sql-book-for-bigdata.chap3.mst_users` (
     user_id         STRING
   , register_date   DATETIME
   , register_device INT64
 );
 
-INSERT INTO `sql-book-for-bigdata.mst_users`
+INSERT INTO `sql-book-for-bigdata.chap3.mst_users`
 VALUES
     ('U001', '2016-08-26', 1)
   , ('U002', '2016-08-26', 2)
@@ -95,42 +102,70 @@ VALUES
 ![](../images/sqp-book/bq-editor.png)
 
 編集したのは以下の点です。
+`sql-book-for-bigdata`の部分には自身が設定したプロジェクトIDが入ります。
 ```diff SQL
-+ DROP TABLE IF EXISTS `sql-book-for-bigdata.mst_users`;
-+ CREATE TABLE `sql-book-for-bigdata.mst_users` (
++ DROP TABLE IF EXISTS `sql-book-for-bigdata.chap3.mst_users`;
+- DROP TABLE IF EXISTS mst_users;
+
++ CREATE TABLE `sql-book-for-bigdata.chap3.mst_users` (
 +     user_id         STRING
 +  , register_date   DATETIME
 +   , register_device INT64
 + );
-
-+ INSERT INTO `sql-book-for-bigdata.mst_users`
-+ VALUES
-+    ('U001', '2016-08-26', 1)
-+  , ('U002', '2016-08-26', 2)
-+  , ('U003', '2016-08-27', 3)
-+ ;
-
-
-- DROP TABLE IF EXISTS mst_users;
 - CREATE TABLE mst_users(
 -    user_id         varchar(255)
 -   , register_date   varchar(255)
 -  , register_device integer
 - );
 
++ INSERT INTO `sql-book-for-bigdata.chap3.mst_users`
 - INSERT INTO mst_users
-- VALUES
--     ('U001', '2016-08-26', 1)
--   , ('U002', '2016-08-26', 2)
--   , ('U003', '2016-08-27', 3)
-- ;
 ```
+エディタの`実行`をクリックすると`mst_users`という名前のテーブルが`chap3`のもとに作成されます。
+これで本に記載のあるクエリを実行できるようになりました！！
+### 他のダミーデータを追加したい時
+今回は`Chapter3/3-1-1-data.sql`のダミーデータをBigQueryで利用できるようにしました。同様の手順を踏むことによって他のダミーデータもBigQueryで活用できるようになります。
+すべてのダミーデータをBigQueryに保存しようとすると多少面倒かと思われるので、「実際にクエリを書いてみて、結果を確認してみたい！」となったダミーデータだけを保存するようにするのがいいと思われます。
+### 補足
+今回はさくっとSQLに入門することが目的であるため深堀りはしませんが疑問に思われるであろう点の補足をします。
+- テーブル名について
+BigQueryではテーブルを参照する際に
+`{project-id}.{dataset-id}.{table-name}`で参照する必要があります。
+そのため`mst_users`を`sql-book-for-bigdata.chap3.mst_users`へと変更する必要があったのです。
 
+- 型について
+`varchar(255)`や`integer`といった型はBigQueryではサポートされていないため適宜変更してあげる必要があります。
+これに関しては[公式ドキュメント](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types?hl=ja)を参照するのが良いと思われます。
+ 
 # 実際にクエリを書いてみる
+では、実際に保存したテーブルから欲しいデータを抽出するためのクエリを書いてみましょう。
+『ビッグデータ分析・活用のためのSQLレシピ』27ページの`コード3.1.1.1:コードをラベルに置き換えるクエリ`を実行してみたいと思います。
+BigQueryのエディタに以下のクエリを書いて実行します。
+```SQL
+SELECT
+  user_id,
+  CASE
+    WHEN register_device = 1 THEN "PC"
+    WHEN register_device = 2 THEN "SP"
+    WHEN register_device = 3 THEN "APP"
+  ELSE
+  ""
+END
+  AS device_name
+FROM
+  `sql-book-for-bigdata.chap3.mst_users`
+```
+以下のような結果が得られれば成功です。
+![](../images/sqp-book/query_result.png)
 
+これにてダミーデータをBigQueryに保存して、自身で実際にクエリを叩いてみるという一連の流れが完了です。お疲れ様でした。
+
+今回は1つのダミーデータのみを保存・クエリの実行を行いましたが他のダミーデータも同様の手順を踏むことによってBigQueryに保存することが可能です。
+ぜひ他のデータも保存して実際にクエリを書いてみてください！
 # 最後に
-
-- ダミーデータはデータ数が多くない。→大量のデータを効率的に処理するには本書とは別の視点が必要になる
+今回は自分がSQLを勉強した際に活用した『ビッグデータ分析・活用のためのSQLレシピ』をBigQueryを使って勉強する方法を紹介しました。
+SQLがスラスラ書けると機械学習を使いたいときの特徴量作成なども高速に行うことができるようになったりと様々な恩恵があるので是非SQLに入門してみてください！
+何かのお役に立てていれば幸いです。
 
 
 
