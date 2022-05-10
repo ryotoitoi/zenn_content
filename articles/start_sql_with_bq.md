@@ -1,9 +1,9 @@
 ---
-title: "ビッグデータ分析・活用のためのSQLレシピをBigQueryではじめる"
+title: "BigQueryではじめる『ビッグデータ分析・活用のためのSQLレシピ』"
 emoji: "💽"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["SQL", "BigQuery", "ビッグデータ分析・活用のためのSQLレシピ"]
-published: false
+published: true
 ---
 
 # はじめに
@@ -139,12 +139,33 @@ BigQueryではテーブルを参照する際に
  
 # 実際にクエリを書いてみる
 では、実際に保存したテーブルから欲しいデータを抽出するためのクエリを書いてみましょう。
+『ビッグデータ分析・活用のためのSQLレシピ』27ページの`コード3.1.1.1:コードをラベルに置き換えるクエリ`を実行してみたいと思います。
+BigQueryのエディタに以下のクエリを書いて実行します。
+```SQL
+SELECT
+  user_id,
+  CASE
+    WHEN register_device = 1 THEN "PC"
+    WHEN register_device = 2 THEN "SP"
+    WHEN register_device = 3 THEN "APP"
+  ELSE
+  ""
+END
+  AS device_name
+FROM
+  `sql-book-for-bigdata.chap3.mst_users`
+```
+以下のような結果が得られれば成功です。
+![](../images/sqp-book/query_result.png)
 
+これにてダミーデータをBigQueryに保存して、自身で実際にクエリを叩いてみるという一連の流れが完了です。お疲れ様でした。
 
-
+今回は1つのダミーデータのみを保存・クエリの実行を行いましたが他のダミーデータも同様の手順を踏むことによってBigQueryに保存することが可能です。
+ぜひ他のデータも保存して実際にクエリを書いてみてください！
 # 最後に
-
-- ダミーデータはデータ数が多くない。→大量のデータを効率的に処理するには本書とは別の視点が必要になる
+今回は自分がSQLを勉強した際に活用した『ビッグデータ分析・活用のためのSQLレシピ』をBigQueryを使って勉強する方法を紹介しました。
+SQLがスラスラ書けると機械学習を使いたいときの特徴量作成なども高速に行うことができるようになったりと様々な恩恵があるので是非SQLに入門してみてください！
+何かのお役に立てていれば幸いです。
 
 
 
