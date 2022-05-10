@@ -99,7 +99,7 @@ VALUES
 ;
 ```
 今、エディタの画面が以下の画像のようになっていればOKです。
-![](../images/sqp-book/bq-editor.png)
+![bq-editor](../images/sqp-book/bq-editor.png)
 
 編集したのは以下の点です。
 `sql-book-for-bigdata`の部分には自身が設定したプロジェクトIDが入ります。
@@ -156,7 +156,7 @@ FROM
   `sql-book-for-bigdata.chap3.mst_users`
 ```
 以下のような結果が得られれば成功です。
-![](../images/sqp-book/query_result.png)
+![sql_result](../images/sqp-book/query_result.png)
 
 これにてダミーデータをBigQueryに保存して、自身で実際にクエリを叩いてみるという一連の流れが完了です。お疲れ様でした。
 
