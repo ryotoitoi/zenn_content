@@ -46,20 +46,20 @@ published: false
 ## 『ビッグデータ分析・活用のためのSQLレシピ』サポートサイトからダミーデータをダウンロードする
 ダミーデータをダウンロードするために[サポートサイト](https://book.mynavi.jp/supportsite/detail/9784839961268.html)にアクセスしてください。
 `ダウンロードデータ`のとろこにある`SQL_Recipe_sample-code_20170325.zip`をクリックするとダウンロードが開始されます。
-![](../images/sqp-book/suport-site.png)
+![](../images/sql_book/suport-site.png)
 *サポートサイト参考画像*
 ## ダミーデータをテーブルに保存する
 ### ダウンロードしたダミーデータを確認する。
 まずVScodeでもなんでもいいので先程ダウンロードしたダミーデータを開きます。
 そして`Chapter3/3-1-1-data.sql`を開いて見てください。以下の画像のようなコードが記載されていることが確認できるかと思います。
-![](../images/sqp-book/dummy_download.png)
+![](../images/sql_book/dummy_download.png)
 
 ### ダウンロードしてきたダミーデータからBigQueryにテーブルを作成する
 試しに`Chapter3/3-1-1-data.sql`のデータをBigQueryのテーブルに保存してみます。
 まず、GCPのナビゲーションメニューから`BigQuery`を探し出して`SQLワークスペース`移動します。すると以下のような画面になっていると思われます。
-![](../images/sqp-book/sql-workspace.png)
+![](../images/sql_book/sql-workspace.png)
 画像の画面に遷移できたら`sql-book-for-bigdata.chap3`のよこの縦三点リーダーをクリックして**データセットを作成**をクリックします。すると以下のような画面に移ります。
-![](../images/sqp-book/create-dataset.png)
+![](../images/sql_book/create-dataset.png)
 今回はChapter3のダミーデータを作成したいので、
 - データセットID：chap3
 - データのロケーション：asia-northeast1 (東京)
@@ -99,7 +99,7 @@ VALUES
 ;
 ```
 今、エディタの画面が以下の画像のようになっていればOKです。
-![bq-editor](../images/sqp-book/bq-editor.png)
+![bq-editor](../images/sql_book/bq-editor.png)
 
 編集したのは以下の点です。
 `sql-book-for-bigdata`の部分には自身が設定したプロジェクトIDが入ります。
@@ -156,7 +156,7 @@ FROM
   `sql-book-for-bigdata.chap3.mst_users`
 ```
 以下のような結果が得られれば成功です。
-![sql_result](../images/sqp-book/query_result.png)
+![sql_result](../images/sql_book/query_result.png)
 
 これにてダミーデータをBigQueryに保存して、自身で実際にクエリを叩いてみるという一連の流れが完了です。お疲れ様でした。
 
