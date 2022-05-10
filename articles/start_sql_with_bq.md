@@ -3,7 +3,7 @@ title: "BigQueryではじめる『ビッグデータ分析・活用のためのS
 emoji: "💽"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["SQL", "BigQuery", "ビッグデータ分析・活用のためのSQLレシピ"]
-published: false
+published: true
 ---
 
 # はじめに
