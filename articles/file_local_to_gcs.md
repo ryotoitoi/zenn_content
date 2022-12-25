@@ -3,7 +3,7 @@ title: "Google Cloud Strage(GCS)にcsvをアップロードしてみる。(pytho
 emoji: "🐈"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ['Google Cloud', 'GCS', 'Google Cloud Strage']
-published: false
+published: true
 ---
 
 # やり方
@@ -12,8 +12,7 @@ Google Cloud Console > IAMと管理 > サービスアカウント > キー
 から鍵を作成する。
 今回はJSONで作成。
 
-
-'''python
+```python
 from gcloud import storage
 from oauth2client.service_account import ServiceAccountCredentials
 import json
@@ -35,5 +34,4 @@ bucket = client.get_bucket(BUCKETS_NAME)
 
 blob = bucket.blob(DESTINATION_BLOB_NAME)
 blob.upload_from_filename(SOURCE_FILE_NAME)
-'''
-
+```
